@@ -36,4 +36,3 @@ def scrape():
 threading.Thread(target=scrape).start()
 os.remove("check.txt")
 os.remove("proxy.txt")
-os.remove("proxy1.txt")
