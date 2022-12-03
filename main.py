@@ -18,16 +18,12 @@ def scrape():
                 try:
                     i = i[i.find("/")+1:]
                     i = i[i.find("/")+1:]
-                    with open("proxy.txt", "a+") as proxy:
-                            proxy.write(i)
+                    if len(i) > 7 and len(i) < 18:
+                        if i.__contains__(":"):
+                            with open("proxy.txt", "a+") as proxy:
+                                    proxy.write(i)
                 except:
                     pass
-            with open("proxy.txt") as file:
-                for z in file.readlines():
-                    if len(z) > 7 and len(z) < 18:
-                        if z.__contains__(":"):
-                            with open("proxy1.txt", "a+") as f:
-                                f.write(z)
             print("Filter finished, now Checking for duplicate. Remember to check the original code of the duplicate text: https://github.com/Hazza3100/Text-Duplicate-Checker")
             with open('proxy1.txt') as f:
                 content = f.read().split('\n')
