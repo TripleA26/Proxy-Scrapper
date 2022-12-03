@@ -2,6 +2,7 @@ import requests
 import os
 import threading
 def scrape():
+    os.system("cls")
     with open("links.txt") as f:
         for _ in f.readlines():
             link = _.removesuffix("\n")
@@ -18,14 +19,15 @@ def scrape():
                 try:
                     i = i[i.find("/")+1:]
                     i = i[i.find("/")+1:]
-                    if len(i) > 7 and len(i) < 18:
+                    if len(i) > 7 and len(i) < 22:
                         if i.__contains__(":"):
                             with open("proxy.txt", "a+") as proxy:
                                     proxy.write(i)
                 except:
                     pass
+            os.system("cls")
             print("Filter finished, now Checking for duplicate. Remember to check the original code of the duplicate text: https://github.com/Hazza3100/Text-Duplicate-Checker")
-            with open('proxy1.txt') as f:
+            with open('proxy.txt') as f:
                 content = f.read().split('\n')
                 content = set([line for line in content if line != ''])
                 content = '\n'.join(content)
