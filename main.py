@@ -38,27 +38,6 @@ threading.Thread(target=scrape).start()
 c = queue.Queue()
 valid = []
 
-with open('proxies.txt', 'r') as f:
-    proxies = f.read().split('\n')
-    for x in proxies:
-        c.put(x)
-print("finished the filter, starting checking the proxies")
-def check():
-    with requests.Session() as session:
-        try:
-            global c
-            while not c.empty():
-                proxy = c.get()
-                r = session.get('https://ipinfo.io/ip', proxies={'http': f'http://{proxy}', 'https': f'http://{proxy}'})
-                if r.status_code == 200:
-                    print("valid proxy")
-                    open('valid.txt', 'a').write(f'{proxy}\n')
-                else:
-                    pass
-
-        except:
-            pass
-
 
 b = len(open('proxies.txt', 'r').readlines())
 for _ in range(b):
